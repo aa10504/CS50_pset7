@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <table style="border: 2px solid;" align="center">
+        <tr style="height: 50px;">
+            <th style="border: 1px solid; font-size: 15pt; font-family: georgia; text-align: center; width: 120px;">Company Name</th>
+            <th style="border: 1px solid; font-size: 15pt; font-family: georgia; text-align: center; width: 120px;">Company Symbol</th>
+            <th style="border: 1px solid; font-size: 15pt; font-family: georgia; text-align: center; width: 120px;">Stock Price</th>
+        </tr>
+        <tr style="height: 40px;">
+            <td style="border: 1px solid; font-size: 12pt; font-family: georgia; text-align: center; width: 120px;">{{stock.name}}</td>
+            <td style="border: 1px solid; font-size: 12pt; font-family: georgia; text-align: center; width: 120px;">{{stock.symbol}}</td>
+            <td style="border: 1px solid; font-size: 12pt; font-family: georgia; text-align: center; width: 120px;">$ {{stock.price}}</td>
+        </tr>
+    </table>
+    <br>
+    <form action="{{ url_for('quote') }}" method="get">
+        <div class="form-group">
+            <button class="btn btn-default" type="submit">Back to Quote</button>
+        </div>
+    </form>
+{% endblock %}

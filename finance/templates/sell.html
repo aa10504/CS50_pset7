@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <table style="border: 2px solid;" align="center">
+        <tr style="height: 50px;">
+            <th style="border: 1px solid; font-size: 15pt; font-family: georgia; text-align: center; width: 100px;">Symbol</th>
+            <th style="border: 1px solid; font-size: 15pt; font-family: georgia; text-align: center; width: 160px;">Name</th>
+            <th style="border: 1px solid; font-size: 15pt; font-family: georgia; text-align: center; width: 85px;">Shares</th>
+            <th style="border: 1px solid; font-size: 15pt; font-family: georgia; text-align: center; width: 100px;">Price</th>
+            <th style="border: 1px solid; font-size: 15pt; font-family: georgia; text-align: center; width: 120px;">Total</th>
+        </tr>
+        {% for data in porfolio%}
+        <tr style="height: 40px;">
+            <td style="border: 1px solid; font-size: 12pt; font-family: georgia; text-align: center; width: 100px;">{{data.symbol}}</td>
+            <td style="border: 1px solid; font-size: 12pt; font-family: georgia; text-align: center; width: 160px;">{{data.name}}</td>
+            <td style="border: 1px solid; font-size: 12pt; font-family: georgia; text-align: center; width: 85px;">{{data.holding_share}}</td>
+            <td style="border: 1px solid; font-size: 12pt; font-family: georgia; text-align: center; width: 100px;">$ {{data.price}}</td>
+            <td style="border: 1px solid; font-size: 12pt; font-family: georgia; text-align: center; width: 120px;">$ {{data.total}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <form action="{{ url_for('sell') }}" method="post">
+        <fieldset>
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="stock_symbol" placeholder="the Symbol of Stock" type="text"/>
+            </div>
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="shares" placeholder="how many shares?" type="text"/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Sell it!</button>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

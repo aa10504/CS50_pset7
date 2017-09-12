@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <table style="border: 2px solid;" align="center">
+        <tr style="height: 50px;">
+            <th style="border: 1px solid; font-size: 15pt; font-family: georgia; text-align: center; width: 100px;">Symbol</th>
+            <th style="border: 1px solid; font-size: 15pt; font-family: georgia; text-align: center; width: 160px;">Name</th>
+            <th style="border: 1px solid; font-size: 15pt; font-family: georgia; text-align: center; width: 85px;">Shares</th>
+            <th style="border: 1px solid; font-size: 15pt; font-family: georgia; text-align: center; width: 100px;">Price</th>
+            <th style="border: 1px solid; font-size: 15pt; font-family: georgia; text-align: center; width: 120px;">Total</th>
+        </tr>
+        {% for data in porfolio%}
+        <tr style="height: 40px;">
+            <td style="border: 1px solid; font-size: 12pt; font-family: georgia; text-align: center; width: 100px;">{{data.symbol}}</td>
+            <td style="border: 1px solid; font-size: 12pt; font-family: georgia; text-align: center; width: 160px;">{{data.name}}</td>
+            <td style="border: 1px solid; font-size: 12pt; font-family: georgia; text-align: center; width: 85px;">{{data.holding_share}}</td>
+            <td style="border: 1px solid; font-size: 12pt; font-family: georgia; text-align: center; width: 100px;">$ {{data.price}}</td>
+            <td style="border: 1px solid; font-size: 12pt; font-family: georgia; text-align: center; width: 120px;">$ {{data.total}}</td>
+        </tr>
+        {% endfor %}
+        <tr style="height: 50px;">
+            <td style="border: 1px solid; font-weight: bold; font-size: 15pt; font-family: georgia; text-align: center; width: 100px;">CASH</td>
+            <td style="width: 160px;"></td>
+            <td style="width: 85px;"></td>
+            <td style="width: 100px;"></td>
+            <td style="border: 1px solid; font-size: 12pt; font-family: georgia; text-align: center; width: 120px;">$ {{porfolio[0].cash}}</td>
+        </tr>
+    </table>
+{% endblock %}
